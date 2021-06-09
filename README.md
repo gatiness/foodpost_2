@@ -27,10 +27,7 @@
 https://docs.google.com/spreadsheets/d/1ls_bjoni0kMUJg_XDwFJweyuvmrag4LFFCno9juPN7Y/edit#gid=0
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1RXRPbN7fWqzaMlOsOl5tf_abiNnAMxe0gye-uujzbuE/edit#gid=0
-
-## ER図
-https://docs.google.com/spreadsheets/d/1ls_bjoni0kMUJg_XDwFJweyuvmrag4LFFCno9juPN7Y/edit#gid=523940175
+https://docs.google.com/spreadsheets/d/1RXRPbN7fWqzaMlOsOl5tf_abiNnAMxe0gye-uujzbuE/edit?usp=sharing
 
 ## ワイヤーフレーム
 https://docs.google.com/spreadsheets/d/1ls_bjoni0kMUJg_XDwFJweyuvmrag4LFFCno9juPN7Y/edit#gid=1594898479
