@@ -20,7 +20,16 @@
 * ゲストログイン機能
 * 管理者権限機能
 
-## 就職termに学んだ機能
+## 実行手順
+```
+$ git clone https://github.com/gatiness/foodpost_2
+$ cd foodpost
+$ bundle install
+$ rails db:create && rails db:migrate
+$ rails s
+```
+
+## 就職termで学んだ機能
 * コメント機能
 * お気に入り機能
 
