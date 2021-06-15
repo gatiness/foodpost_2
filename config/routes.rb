@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
+  root 'tops#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'posts/new'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'posts/_form'
-  root 'users#index'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
@@ -14,4 +9,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :posts
+
+  post '/tops/guest_sign_in', to: 'tops#guest_sign_in'
 end
