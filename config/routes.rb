@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'posts#index'
+  get 'posts/new'
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/edit'
+  get 'posts/_form'
+  root 'users#index'
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+
+  devise_for :users
+  resources :users
+  resources :posts
 end
