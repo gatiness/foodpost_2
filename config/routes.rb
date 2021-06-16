@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :users
+  resources :users, only: [:show, :edit, :update, :destroy]
   resources :posts
 
   post '/tops/guest_sign_in', to: 'tops#guest_sign_in'
