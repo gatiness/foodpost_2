@@ -1,0 +1,7 @@
+<p><%= @user.email %></p>
+
+<% if @user.image.attached? %>
+  <%= image_tag @user.profile_photo %>
+<% end %>
+
+<%= link_to "編集", edit_user_registration_path %>
