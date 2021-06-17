@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:create, :edit, :update]
+  before_action :set_post, only: [:create, :edit, :update, :destroy]
+
   def create
-    @comment = @post.comments.build(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(permitted_parameters)
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -10,17 +12,19 @@ class CommentsController < ApplicationController
       end
     end
   end
+
   def edit
     @comment = @post.comments.find(params[:id])
     respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
+      flash.now[:notice] = 'コメント編集中'
       format.js { render :edit }
     end
   end
+
   def update
     @comment = @post.comments.find(params[:id])
       respond_to do |format|
-        if @comment.update(comment_params)
+        if @comment.update(permitted_parameters)
           flash.now[:notice] = 'コメントが編集されました'
           format.js { render :index }
         else
@@ -28,8 +32,8 @@ class CommentsController < ApplicationController
           format.js { render :edit_error }
         end
       end
-  end
-  # 追加
+    end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -38,12 +42,12 @@ class CommentsController < ApplicationController
       format.js { render :index }
     end
   end
-  # ここまで
+
   private
-  def comment_params
-    params.require(:comment).permit(:post_id, :content)
-  end
   def set_post
     @post = Post.find(params[:post_id])
+  end
+  def permitted_parameter
+    params.require(:comment).permit(:post_id, :content, :image).merge(user_id: current_user.id)
   end
 end
