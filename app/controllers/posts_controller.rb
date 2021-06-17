@@ -16,9 +16,14 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def show
+    @comments = @post.comments
+    @comment = @post.comments.build
+  end
+
   def create
     @post = current_user.posts.build(permitted_parameters)
-    # respond_to do |format|
+    respond_to do |format|
       if @post.save
         redirect_to @post, notice: "Post has been successfully created." 
       else
@@ -52,3 +57,4 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content, :image)
     end
   end
+end

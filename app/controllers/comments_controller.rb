@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_blog, only: [:create, :edit, :update]
+  before_action :set_post, only: [:create, :edit, :update]
   def create
     @comment = @post.comments.build(comment_params)
     respond_to do |format|
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     end
   end
   def update
-    @comment = @blog.comments.find(params[:id])
+    @comment = @post.comments.find(params[:id])
       respond_to do |format|
         if @comment.update(comment_params)
           flash.now[:notice] = 'コメントが編集されました'
