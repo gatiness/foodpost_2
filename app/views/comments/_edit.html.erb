@@ -10,13 +10,10 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.text_area :content, id: "comment_content_#{post.id}" %>
-    <%= form.label :content %>
+    <%= form.text_area :comment, id: "comment_comment_#{comment.id}" %>
+    <%= form.label :contentコメント %>
   </div>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-
-$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit', post: @post, comment: @comment %>");
-$("#notice").html("<%= j flash[:notice] %>");

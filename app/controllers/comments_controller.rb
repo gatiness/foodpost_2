@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(permitted_parameters)
+    @comment = @post.comments.build(permitted_parameter)
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   def update
     @comment = @post.comments.find(params[:id])
       respond_to do |format|
-        if @comment.update(permitted_parameters)
+        if @comment.update(permitted_parameter)
           flash.now[:notice] = 'コメントが編集されました'
           format.js { render :index }
         else
@@ -48,6 +48,6 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
   end
   def permitted_parameter
-    params.require(:comment).permit(:post_id, :content, :image).merge(user_id: current_user.id)
+    params.require(:comment).permit(:post_id, :comment, :image).merge(user_id: current_user.id)
   end
 end

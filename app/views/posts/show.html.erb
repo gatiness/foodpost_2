@@ -11,14 +11,6 @@
     </p>
   </div>
 
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-  </div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', posts_path %>
-  </div>
-
   <% unless @post.user_id == current_user.id %>
     <% if @favorite.present? %>
       <%= link_to 'Remove from favorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -26,4 +18,17 @@
       <%= link_to 'Favorite', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
+
+   <div class="container">
+    <p id="notice"><%= notice %></p>
+    </div>
+    <p class = 'btn-border-bottom'><p>コメント一覧</p>
+    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+    </div>
+  </div>
+
+  <%= link_to 'フード投稿一覧', posts_path, class: 'btn btn-primary mx-auto d-block col-md-3' %> 
+
 </div>
