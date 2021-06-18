@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
+  has_many :labelings, dependent: :destroy
 end
