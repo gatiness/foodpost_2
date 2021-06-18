@@ -20,7 +20,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= post.image %></td>
+        <td><%= image_tag post.image %></td>
         <td><%= link_to post.user.name, user_path(post.user.id) %></td>
         <td><%= link_to 'Description', post %></td>
         <% if post.user == current_user %>

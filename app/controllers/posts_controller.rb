@@ -23,17 +23,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(permitted_parameters)
-    respond_to do |format|
-      if @post.save
-        redirect_to posts_path, notice: "作成しました" 
-      else
-        render :new
-      end
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to posts_path, notice: "作成しました" 
+    else
+      render :new
     end
+  end
 
   def update
-    if @post.update(permitted_parameters)
+    if @post.update(post_params)
         redirect_to posts_path, notice: '編集しました'
       else
         render :new
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
       redirect_to posts_path, notice: '削除しました'
-    end
+    # end
   end
 
   private
@@ -51,8 +50,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def permitted_parameters
-    params.require(:post).permit(:title, :content, :image)
+  def post_params
+    params.require(:post).permit(:title, :content, :image, :user_id, label_ids: [])
   end
 end
 
