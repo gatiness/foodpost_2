@@ -16,39 +16,43 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
+    @comments = @post.comments
+    @comment = @post.comments.build
+  end
+
   def create
     @post = current_user.posts.build(permitted_parameters)
-    # respond_to do |format|
+    respond_to do |format|
       if @post.save
-        redirect_to @post, notice: "Post has been successfully created." 
+        redirect_to posts_path, notice: "作成しました" 
       else
         render :new
       end
     end
 
   def update
-    respond_to do |format|
-      if @post.update(permitted_parameters)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
+    if @post.update(permitted_parameters)
+        redirect_to posts_path, notice: '編集しました'
       else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+        render :new
     end
   end
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+      redirect_to posts_path, notice: '削除しました'
     end
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
-
-    def permitted_parameters
-      params.require(:post).permit(:title, :content, :image)
-    end
+  def set_post
+    @post = Post.find(params[:id])
   end
+
+  def permitted_parameters
+    params.require(:post).permit(:title, :content, :image)
+  end
+end
+
