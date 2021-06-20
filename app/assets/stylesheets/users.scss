@@ -8,11 +8,12 @@
 
 body {
   font-family: sans-serif;
-  background: grey
+  background: #fcccdc;
+  padding-bottom: 100px; 
 }
 
 nav {
-  background: -webkit-linear-gradient(0deg, #405DE6, #5851DB, #833AB4, #E1306C, #f50bc2);
+  background: #fcccdc;
 }
 
 foot-nav {
@@ -22,6 +23,7 @@ foot-nav {
 
 .header-menu {
   color: black;
+  background: #fcccdc;
 }
 
 .main {
