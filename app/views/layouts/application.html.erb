@@ -1,24 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Foodpost</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <%= link_to "投稿一覧", posts_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+
+<nav class="navbar navbar-expand-lg navbar-light p-4">
+    <a class="navbar-brand" href="#"><%= image_tag "logo.png", width:45, class: "d-inline-block align-top" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+      <% if user_signed_in? %>
+        <%= link_to 'ホーム', posts_path, class: 'btn btn-secondary' %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-secondary' %>
+        <%= link_to "ログイン", new_user_session_path, class: 'btn btn-secondary' %>
+        <%= link_to 'ゲストログイン', tops_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar fixed-bottom navbar-light" style="background-color: #fcccdc;">
+  <p class="navbar-brand" id= "footer">© 2021 FOODPOST DEVELOPED BY MACHIKO</p>
+</nav>
     <%= yield %>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>
 </html>

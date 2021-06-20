@@ -2,26 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
 .user-icon {
   border-radius: 100px;
 }
 
 body {
-  font-family: sans-serif;
-  background: grey
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #F88AAF;
+  padding-bottom: 100px; 
 }
 
 nav {
-  background: -webkit-linear-gradient(0deg, #405DE6, #5851DB, #833AB4, #E1306C, #f50bc2);
+  background: #fcccdc;
 }
 
 foot-nav {
   display:flex;
   justify-content: center;
+  background: #fcccdc;
 }
 
 .header-menu {
   color: black;
+  background: #fcccdc;
 }
 
 .main {
@@ -32,4 +37,6 @@ foot-nav {
   font-family: sans-serif;
   font-size: small;
   margin-left: 40%;
+  background: #fcccdc;
 }
+
