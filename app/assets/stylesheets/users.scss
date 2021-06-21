@@ -39,7 +39,8 @@ foot-nav {
   background: #fcccdc;
 }
 
-*fullscreen {
+.fullscreen {
+  position: relative;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -59,8 +60,18 @@ foot-nav {
 }
 /* ** */}
 
-.my_page {
+*my_page {
   text-align:center;
   width: 80%;
   margin: 0 auto;
+}
+
+.fullscreen p {
+  position: absolute;
+  color: black;
+  top: 20%;
+  right: 10%;
+  font-weight: bold; /*太字に*/
+  font-size: 3em;/*サイズ2倍*/
+  font-family: 'Staatliches', cursive;
 }
