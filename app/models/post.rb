@@ -6,5 +6,6 @@ class Post < ApplicationRecord
   has_many :labels, through: :labelings
 
   validates :title, presence: true, length:{ maximum:25} 
+  validates :content, presence: true, length:{ maximum:140} 
 
 end

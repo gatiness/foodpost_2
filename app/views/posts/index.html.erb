@@ -120,7 +120,10 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= image_tag post.image, height: '80' %></td>
+
+        <% if post.image.attached? %>
+          <%= image_tag post.image, height: '80' %> 
+        <% end %>
         <td><%= link_to post.user.name, user_path(post.user.id) %></td>
         <td><%= link_to 'Description', post %></td>
         <% if post.user == current_user %>
