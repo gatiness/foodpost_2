@@ -1,29 +1,38 @@
 require 'rails_helper'
 RSpec.describe 'Post', type: :system do
-
+  let!(:user){FactoryBot.create(:user)}
+  let!(:post){FactoryBot.create(:post, user_id:user.id)}
+before do
+  visit new_user_session_path
+  fill_in "user[email]", with: 'aaa@amail.com'
+  fill_in "user[password]", with: '1111pppp'
+  click_button 'commit'
+  click_on 'ホーム'
+end
   describe 'New post' do
     context "when new task gets created" do
       it 'appears in the index page' do
-        visit posts_path
+        # binding.irb
         click_on '新規投稿'
-        fill_in :title, with: 'title 1'
-        fill_in :content, with: 'content 1'
-        click_button '投稿する'
+        fill_in "post[title]", with: 'post 1'
+        fill_in "post[content]", with: 'content 1'
+        click_on '投稿する'
         expect(page).to have_content 'post 1'
         expect(page).to have_content 'content 1'
       end
     end
     context "投稿者本人が" do
       it '投稿を削除できる' do
-        visit posts_path
-        click_on 'Delete'
-        click_button 'Delete'
+        # binding.irb
+        first('tr td:nth-child(6)').click
+        sleep(0.5)
+        page.driver.browser.switch_to.alert.accept
+        # click_button 'Delete'
         expect(page).to have_content '削除しました'
       end
     end
     context "投稿者本人が" do
       it '投稿を編集できる' do
-        visit posts_path
         click_on 'Edit' 
         fill_in :title, with: 'post 2'
         fill_in :content, with: 'post 2'
@@ -34,7 +43,6 @@ RSpec.describe 'Post', type: :system do
     end
     context "文章と画像で" do
       it 'フード投稿ができる' do
-        visit posts_path
         click_on '新規投稿' 
         fill_in :title, with: 'post 3'
         fill_in :content, with: 'post 3'
@@ -43,7 +51,18 @@ RSpec.describe 'Post', type: :system do
         expect(page).to have_content 'post 3'
         expect(page).to have_content 'content 3'
         expect(page).to have_selector("img[src$='image1.png']")
-
+      end
+    end
+    context "キーワードで" do
+      it 'フード投稿が検索できる' do
+        click_on '新規投稿' 
+        fill_in :title, with: 'post 3'
+        fill_in :content, with: 'post 3'
+        attach_file 'image1.png'
+        click_button '投稿する'
+        expect(page).to have_content 'post 3'
+        expect(page).to have_content 'content 3'
+        expect(page).to have_selector("img[src$='image1.png']")
       end
     end
   end
