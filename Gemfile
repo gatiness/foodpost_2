@@ -38,6 +38,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'launchy'
 end
 
 group :development do
@@ -48,7 +53,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'letter_opener_web'
+  gem 'webdrivers'
 end
 
 group :test do
@@ -70,3 +75,6 @@ gem 'mini_magick'
 gem 'image_processing'
 gem 'rmagick'
 gem 'ransack'
+
+gem 'letter_opener_web'
+
