@@ -1,23 +1,20 @@
 FactoryBot.define do
-  factory :task do
-    name { 'task7' }
-    description { 'desc7' }
-    due_date { '2021-05-03' }
-    status { 2 }
-    priority { 1 }
+  # 作成するテストデータの名前を「task」とします
+  # （実際に存在するクラス名と一致するテストデータの名前をつければ、そのクラスのテストデータを自動で作成します）
+  factory :user do
+    name { 'araba' }
+    email { "aaa@amail.com" }
+    password { "1111pppp" }
+    password_confirmation { '1111pppp' }
+    admin { "false" }
   end
-  factory :task2, class: Task do
-    name { 'task5' }
-    description { 'desc5' }
-    due_date { '2021-06-09' }
-    status { 1 }
-    priority { 3 }
-  end
-  factory :task3, class: Task do
-    name { 'task1' }
-    description { 'desc1' }
-    due_date { '2021-06-01' }
-    status { 0 }
-    priority { 3 }
+  # 作成するテストデータの名前を「second_task」とします
+  # （存在しないクラス名の名前をつける場合、オプションで「このクラスのテストデータにしてください」と指定します）
+  factory :admin, class: User do
+    name { 'machiko' }
+    email { "aaa@jmail.com" }
+    password { "1111qqqq" }
+    password_confirmation { '1111qqqq' }
+    admin { "true" }
   end
 end

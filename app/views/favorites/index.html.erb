@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="main">
-<h2>Food Timeline</h2>
+<h2>お気に入りリスト</h2>
 <table>
   <thead>
     <tr>
@@ -17,7 +17,9 @@
       <tr>
         <td><%= favorite.title %></td>
         <td><%= favorite.content %></td>
-        <td><%= image_tag favorite.image %></td>
+        <% if post.image.attached? %>
+          <%= image_tag favorite.image, height: '80' %> 
+        <% end %>
         <td><%= link_to favorite.user.name, user_path(favorite.user.id) %></td>
         <td><%= link_to 'Description', favorite %></td>
         <% if favorite.user == current_user %>
