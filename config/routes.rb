@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'tops#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :posts 
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
   resources :posts do
     resources :comments
   end
