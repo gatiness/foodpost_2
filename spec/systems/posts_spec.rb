@@ -24,7 +24,7 @@ end
     context "投稿者本人が" do
       it '投稿を削除できる' do
         # binding.irb
-        first('tr td:nth-child(6)').click
+        first('tr td:nth-child(7)').click
         sleep(0.5)
         page.driver.browser.switch_to.alert.accept
         # click_button 'Delete'
@@ -33,36 +33,32 @@ end
     end
     context "投稿者本人が" do
       it '投稿を編集できる' do
-        click_on 'Edit' 
-        fill_in :title, with: 'post 2'
-        fill_in :content, with: 'post 2'
+        first('tr td:nth-child(6)').click 
+        fill_in "post[title]", with: 'post 3'
+        fill_in "post[content]", with: 'content 3'
         click_button '投稿する'
-        expect(page).to have_content 'post 2'
-        expect(page).to have_content 'content 2'
+        expect(page).to have_content 'post 3'
+        expect(page).to have_content 'content 3'
       end
     end
     context "文章と画像で" do
       it 'フード投稿ができる' do
         click_on '新規投稿' 
-        fill_in :title, with: 'post 3'
-        fill_in :content, with: 'post 3'
-        attach_file 'image1.png'
+        fill_in "post[title]", with: 'post 3'
+        fill_in "post[content]", with: 'content 3'
+        attach_file 'post[image]', 'app/assets/images/post_images/image1.png'
         click_button '投稿する'
         expect(page).to have_content 'post 3'
         expect(page).to have_content 'content 3'
         expect(page).to have_selector("img[src$='image1.png']")
       end
     end
-    context "キーワードで" do
+    context "タイトルで" do
       it 'フード投稿が検索できる' do
-        click_on '新規投稿' 
-        fill_in :title, with: 'post 3'
-        fill_in :content, with: 'post 3'
-        attach_file 'image1.png'
-        click_button '投稿する'
+        binding.irb
+        fill_in "q[content_cont]", with: 'post 3'
+        click_on 'commit'
         expect(page).to have_content 'post 3'
-        expect(page).to have_content 'content 3'
-        expect(page).to have_selector("img[src$='image1.png']")
       end
     end
   end
