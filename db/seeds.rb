@@ -54,6 +54,15 @@ user5 = User.create!(
   image: File.open("./app/assets/images/user_icons/icon5.png"),
 )
 
+user6 = User.create!(
+  name: "machiko",
+  email: "aaa@jmail.com",
+  password: "1111qqqq",
+  password_confirmation: "1111qqqq",
+  image: File.open("./app/assets/images/user_icons/icon6.png"),
+  admin: true
+)
+
 # Post
 post1_1 = Post.create!(
   title: "test-title1",
