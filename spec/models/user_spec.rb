@@ -31,8 +31,8 @@ RSpec.describe User, type: :model do
     end
 
     it '重複したEメールの場合NG' do
-      user_a = create(:user2)
-      user_b = build(:user2)
+      user_a = create(:admin)
+      user_b = build(:admin)
       user_b.valid?
       expect(user_a).to be_valid
       expect(user_b.errors[:email]).to include('はすでに存在します')
@@ -44,3 +44,4 @@ RSpec.describe User, type: :model do
       expect(@user.errors[:password]).to include('は6文字以上で入力してください')
     end
   end
+end

@@ -43,17 +43,5 @@ describe '投稿モデル機能', type: :model do
         expect(post).to be_valid
       end
     end
-    context '住所が空の場合' do
-      it 'バリデーションエラーとなる' do
-        post.address = nil
-        expect(post).to be_invalid
-      end
-    end
-    context '住所が50文字以上の場合' do
-      it 'バリデーションエラーとなる' do
-        post.address = 'a'*51
-        expect(post).to be_invalid
-      end
-    end
   end
 end
