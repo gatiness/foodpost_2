@@ -1,29 +1,38 @@
 require 'rails_helper'
 RSpec.describe 'user関連機能', type: :system do
-  user = FactoryBot.create(:user, name:'araba', email: 'aaa@amail.com', password:'1111pppp')
+  # let(:user) { create(:user) }
+  # let(:admin) { create(:admin) }
+  let(:user3) { create(:user3) }
   before do
     visit root_path
   end
-
   describe 'devise関連機能' do
-    it 'サインアップ機能' do
-      visit new_user_registration_path
+    context 'ユーザーが全ての項目に適切な値を入力したら'
+    it 'サインアップできる' do
       # binding.irb
-      fill_in '名前', with: 'araba'
-      fill_in 'Eメール', with: 'aaa@amail.com'
-      fill_in 'パスワード', with: '1111pppp'
-      fill_in 'パスワード（確認用）', with: '1111pppp'
-      click_button '登録する'
+      click_on '新規登録'
+      fill_in 'user[name]', with: 'チンチラ'
+      fill_in 'user[email]', with: 'chinchilla@cmail.com'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user[password_confirmation]', with: 'password'
+      click_on 'commit'
       expect(page).to have_content 'お気に入り一覧'
+      expect(page).to have_content 'プロフィール編集'
     end
-  end
 
     it 'ログイン機能' do
-      visit new_user_session_path
-      fill_in 'Eメール', with: 'aaa@amail.com'
-      fill_in 'パスワード', with: 'password'
-      # binding.irb
-      click_button 'ログイン'
+      click_on '新規登録'
+      fill_in 'user[name]', with: 'チンチラ'
+      fill_in 'user[email]', with: 'chinchilla@cmail.com'
+      fill_in 'user_password', with: 'password'
+      fill_in 'user[password_confirmation]', with: 'password'
+      click_on 'commit'
+      click_on 'ログアウト'
+      click_on 'ログイン'
+      fill_in 'user[email]', with: 'chinchilla@cmail.com'
+      fill_in 'user_password', with: 'password'
+      click_on 'commit'
       expect(page).to have_content 'お気に入り一覧'
     end
   end
+end

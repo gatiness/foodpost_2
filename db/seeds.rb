@@ -22,7 +22,7 @@ user1 = User.create!(
   email: "test1@example.com",
   password: "password",
   password_confirmation: "password",
-  image: File.open("./app/assets/images/user_icons/icon1.png"),
+  image: File.open("app/assets/images/user_icons/icon1.png"),
   admin: true
 )
 user2 = User.create!(
@@ -30,28 +30,28 @@ user2 = User.create!(
   email: "test2@example.com",
   password: "password",
   password_confirmation: "password",
-  image: File.open("./app/assets/images/user_icons/icon2.png"),
+  image: File.open("app/assets/images/user_icons/icon2.png"),
 )
 user3 = User.create!(
   name: "test3",
   email: "test3@example.com",
   password: "password",
   password_confirmation: "password",
-  image: File.open("./app/assets/images/user_icons/icon3.png"),
+  image: File.open("app/assets/images/user_icons/icon3.png"),
 )
 user4 = User.create!(
   name: "test4",
   email: "test4@example.com",
   password: "password",
   password_confirmation: "password",
-  image: File.open("./app/assets/images/user_icons/icon4.png"),
+  image: File.open("app/assets/images/user_icons/icon4.png"),
 )
 user5 = User.create!(
   name: "test5",
   email: "test5@example.com",
   password: "password",
   password_confirmation: "password",
-  image: File.open("./app/assets/images/user_icons/icon5.png"),
+  image: File.open("app/assets/images/user_icons/icon5.png"),
 )
 
 user6 = User.create!(
@@ -67,31 +67,31 @@ user6 = User.create!(
 post1_1 = Post.create!(
   title: "test-title1",
   content: "test_content1",
-  image: File.open("./app/assets/images/post_images/image1.png"),
+  image: File.open("app/assets/images/post_images/image1.png"),
   user_id: user4.id,
 )
 post1_2 = Post.create!(
   title: "test-title2",
   content: "test_content2",
-  image: File.open("./app/assets/images/post_images/image2.png"),
+  image: File.open("app/assets/images/post_images/image2.png"),
   user_id: user2.id,
 )
 post1_3 = Post.create!(
   title: "test-title3",
   content: "test_content3",
-  image: File.open("./app/assets/images/post_images/image3.png"),
+  image: File.open("app/assets/images/post_images/image3.png"),
   user_id: user3.id,
 )
 post1_4 = Post.create!(
   title: "test-title4",
   content: "test_content4",
-  image: File.open("./app/assets/images/post_images/image4.png"),
+  image: File.open("app/assets/images/post_images/image4.png"),
   user_id: user4.id,
 )
 post1_5 = Post.create!(
   title: "test-title5",
   content: "test_content5",
-  image: File.open("./app/assets/images/post_images/image5.png"),
+  image: File.open("app/assets/images/post_images/image5.png"),
   user_id: user5.id,
 )
  # お気に入り
