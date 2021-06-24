@@ -32,11 +32,13 @@
       <% else %>
         <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-secondary' %>
         <%= link_to "ログイン", new_user_session_path, class: 'btn btn-secondary' %>
-        <%= link_to 'ゲストログイン', tops_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
+        <%= link_to 'ゲストログイン(閲覧用)', tops_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
+        <%= link_to 'ゲストログイン(管理者用）', tops_admin_guest_sign_in_path, method: :post, class: 'btn btn-secondary' %>
       <% end %>
       <% if current_user.try(:admin?) %>
-      <li class = "item_bar"><%= link_to '管理者画面', rails_admin_path, class: 'btn btn-secondary' %></li>
-      <li class = "item_bar"><%= link_to '管理者画面', rails_admin_path, class: 'btn btn-secondary' %></li>
+      <%= link_to '管理者画面', rails_admin_path, class: 'btn btn-secondary' %>
+      <%# <li class = "item_bar"><%= link_to '管理者画面', rails_admin_path %></li> 
+      <%# ↑クラスの当て方の参考にする %>
     <% end %>
     </ul>
   </div>
