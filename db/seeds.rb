@@ -6,64 +6,65 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Label.create!(
-  [
-    {name: 'おうちクッキング'},
-    {name: 'テイクアウト'},
-    {name: 'デリバリー'},
-    {name: 'ドリンク'},
-    {name: 'その他'},
-  ]
-)
+# Label.create!(
+#   [
+#     {name: 'おうちクッキング'},
+#     {name: 'テイクアウト'},
+#     {name: 'デリバリー'},
+#     {name: 'ドリンク'},
+#     {name: 'その他'},
+#   ]
+# )
 
 # User
-user1 = User.create!(
-  name: "test1",
-  email: "test1@example.com",
-  password: "password",
-  password_confirmation: "password",
-  image: File.open("app/assets/images/user_icons/icon1.png"),
-  admin: true
-)
-user2 = User.create!(
-  name: "test2",
-  email: "test2@example.com",
-  password: "password",
-  password_confirmation: "password",
-  image: File.open("app/assets/images/user_icons/icon2.png"),
-)
-user3 = User.create!(
-  name: "test3",
-  email: "test3@example.com",
-  password: "password",
-  password_confirmation: "password",
-  image: File.open("app/assets/images/user_icons/icon3.png"),
-)
-user4 = User.create!(
-  name: "test4",
-  email: "test4@example.com",
-  password: "password",
-  password_confirmation: "password",
-  image: File.open("app/assets/images/user_icons/icon4.png"),
-)
-user5 = User.create!(
-  name: "test5",
-  email: "test5@example.com",
-  password: "password",
-  password_confirmation: "password",
-  image: File.open("app/assets/images/user_icons/icon5.png"),
-)
+# user1 = User.create!(
+#   name: "test1",
+#   email: "test1@example.com",
+#   password: "password",
+#   password_confirmation: "password",
+#   image: File.open("app/assets/images/user_icons/icon1.png"),
+#   admin: true
+# )
+# user2 = User.create!(
+#   name: "test2",
+#   email: "test2@example.com",
+#   password: "password",
+#   password_confirmation: "password",
+#   image: File.open("app/assets/images/user_icons/icon2.png"),
+# )
+# user3 = User.create!(
+#   name: "test3",
+#   email: "test3@example.com",
+#   password: "password",
+#   password_confirmation: "password",
+#   image: File.open("app/assets/images/user_icons/icon3.png"),
+# )
+# user4 = User.create!(
+#   name: "test4",
+#   email: "test4@example.com",
+#   password: "password",
+#   password_confirmation: "password",
+#   image: File.open("app/assets/images/user_icons/icon4.png"),
+# )
+# user5 = User.create!(
+#   name: "test5",
+#   email: "test5@example.com",
+#   password: "password",
+#   password_confirmation: "password",
+#   image: File.open("app/assets/images/user_icons/icon5.png"),
+# )
 
 user6 = User.create!(
   name: "machiko",
   email: "aaa@jmail.com",
   password: "1111qqqq",
   password_confirmation: "1111qqqq",
-  image: File.open("./app/assets/images/user_icons/icon6.png"),
+  # image: image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), filename: 'icon6.png'),
+  # article.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), filename: 'icon6.png')
   admin: true
 )
-
-# Post
+user6.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), filename: 'icon6.png')
+Post
 post1_1 = Post.create!(
   title: "test-title1",
   content: "test_content1",

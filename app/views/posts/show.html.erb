@@ -22,11 +22,11 @@
    <div class="container">
     <p id="notice"><%= notice %></p>
     </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
     <div id="comments_area">
     <p class = 'btn-border-bottom'><p>コメント一覧</p>
       <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
     </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
   </div>
 
   <%= link_to 'ホーム', posts_path, class: 'btn btn-primary mx-auto d-block col-md-3' %> 
