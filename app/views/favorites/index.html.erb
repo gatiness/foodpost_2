@@ -19,7 +19,7 @@
         <td><%= favorite.post.content %></td>
         <td>
             <% if favorite.post.user.image.attached? %>
-              <%= image_tag user.image %> 
+              <%= image_tag favorite.post.image %> 
             <% end %>
         </td>
         <td><%= link_to favorite.post.user.name, user_path(favorite.user.id) %></td>
