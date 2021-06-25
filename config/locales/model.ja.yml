@@ -9,11 +9,10 @@ ja:
       post:
         title: タイトル
         content: 内容
-        image: 写真
-        address: 住所
+        image: 画像
       user:
-        image: 写真
-        name: ニックネーム
+        image: 画像
+        name: 名前
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
@@ -21,6 +20,3 @@ ja:
         remember_me: ログインを記憶
       comment:
         content: コメント
-      message:
-        read: 既読
-        body: 本文
