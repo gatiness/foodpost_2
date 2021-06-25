@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 <div class="main">
 <strong>お気に入り投稿</strong>
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>タイトル</th>
       <th>内容</th>
+      <th>ラベル</th>
       <th>画像</th>
       <th>投稿者</th>
       
       <th colspan="3"></th>
     </tr>
   </thead>
-  <tbody>
+
     <% @favorites.each do |favorite| %>
       <tr>
         <td><%= favorite.post.title %></td>
         <td><%= favorite.post.content %></td>
+        <td><% favorite.post.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
         <td>
             <% if favorite.post.user.image.attached? %>
-              <%= image_tag favorite.post.image %> 
+              <%= image_tag favorite.post.image, height: '80' %> 
             <% end %>
         </td>
-        <td><%= link_to favorite.post.user.name, user_path(favorite.user.id) %></td>
-        <td><%= link_to 'Description', favorite %></td>
-        <% if favorite.user == current_user %>
-          <td><%= link_to 'Delete', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "#{favorite.post.user.name}", user_path(favorite.post.user.id) %></td>
+        <td><%= link_to '詳細', post_path(favorite.post.id) %></td>
+        <% if favorite.post.user == current_user %>
+          <td><%= link_to '削除', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>  
     <% end %>  
       </tr>
@@ -33,3 +38,5 @@
 </table>
 
 </div>
+
+
