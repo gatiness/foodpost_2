@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_033758) do
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "post_id"], name: "index_favorites_on_user_id_and_post_id", unique: true
   end
 
   create_table "labelings", force: :cascade do |t|
