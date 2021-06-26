@@ -6,6 +6,9 @@ RSpec.describe 'Post', type: :system do
   let!(:post){FactoryBot.create(:post, user_id:user.id)}
   let!(:post2){FactoryBot.create(:post2, user_id:user3.id)}
   let!(:post3){FactoryBot.create(:post3, user_id:user3.id)}
+  let!(:comment){FactoryBot.create(:comment,post_id:post3.id,user_id:user.id)}
+  
+  
   # post2 = FactoryBot.create(:post2, user_id:user.id)
   # post3 = FactoryBot.create(:post3, user_id:user.id)
 
@@ -49,6 +52,7 @@ RSpec.describe 'Post', type: :system do
     end
     context "文章と画像で" do
       it 'フード投稿ができる' do
+        
         click_on '新規投稿' 
         fill_in "post[title]", with: '内容3'
         fill_in "post[content]", with: 'ねこ'
@@ -70,9 +74,10 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'お気に入り機能' do
-        binding.irb
+        # binding.irb
+        sleep(0.8) 
         first('tr:nth-child(2) td:nth-child(6)').click
-        sleep(0.1)
+        sleep(0.8)
         click_on '♡お気に入り'
         expect(page).to have_content 'お気に入りしました'
       end
@@ -80,6 +85,7 @@ RSpec.describe 'Post', type: :system do
     context "投稿内容で" do
       it 'コメント投稿機能' do
         # binding.irb
+        sleep(0.8)
         first('tr:nth-child(2) td:nth-child(6)').click
         sleep(0.1)
         fill_in "comment[comment]", with: 'test'
@@ -89,17 +95,24 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'コメント編集機能' do
-        first('tr:nth-child(2) td:nth-child(6)').click
+        sleep(0.8)
+        first('tr:nth-child(3) td:nth-child(6)').click
         sleep(0.1)
-        fill_in "comment[comment]", with: 'test'
-        click_on 'コメントする'
+        # fill_in "comment[comment]", with: 'test'
+        # click_on 'コメントする'
         click_on 'コメント編集'
         sleep(0.1)
+        # find_by_id("comment_edit_row-#{comment.id}").set("test2")
+        find_by_id("comment_edit_row-#{comment.id}").set("test2")
+        
+        
+        
         # binding.irb
-        find('textarea#comment_edit_2').set('test2')
+        # find('textarea#comment_edit_2').set('test2')
         sleep(0.1)
         click_on '更新する'
-        expect(page).to have_content 'hitest2'
+        expect(page).to have_content 'test2'
+        sleep(0.1)
         # find('textarea#comment_edit_2').set('')
         # comment_edit_#{comment.id}", with: 'test'
 #         fill_in find_by_id("topics-index_row-#{topic.id}_edit").click
@@ -108,6 +121,7 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'コメント削除機能' do
+        sleep(0.8)
         first('tr:nth-child(2) td:nth-child(6)').click
         sleep(0.1)
         fill_in "comment[comment]", with: 'test'
