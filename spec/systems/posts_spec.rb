@@ -30,7 +30,7 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿者本人が" do
       it '投稿を削除できる' do
-        binding.irb
+        sleep(0.8)
         first('tr td:nth-child(8)').click
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '削除しました'
@@ -38,7 +38,8 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿者本人が" do
       it '投稿を編集できる' do
-        first('tr td:nth-child(7)').click 
+        sleep(0.8) 
+        first('tr td:nth-child(7)').click
         fill_in "post[title]", with: '内容3'
         fill_in "post[content]", with: 'ねこ'
         click_button '投稿する'
@@ -70,6 +71,7 @@ RSpec.describe 'Post', type: :system do
     context "投稿内容で" do
       it 'お気に入り機能' do
         first('tr td:nth-child(8)').click
+        sleep(1)
         page.driver.browser.switch_to.alert.accept
         first('tr td:nth-child(6)').click
         click_on '♡お気に入り'

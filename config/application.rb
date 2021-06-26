@@ -28,4 +28,4 @@ module FoodPost
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
   end
-endj
+end
