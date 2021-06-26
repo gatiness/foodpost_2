@@ -70,13 +70,50 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'お気に入り機能' do
-        first('tr td:nth-child(8)').click
-        sleep(1)
-        page.driver.browser.switch_to.alert.accept
-        first('tr td:nth-child(6)').click
+        binding.irb
+        first('tr:nth-child(2) td:nth-child(6)').click
+        sleep(0.1)
         click_on '♡お気に入り'
         expect(page).to have_content 'お気に入りしました'
-        expect(page).to have_content 'Remove from favorite'
+      end
+    end
+    context "投稿内容で" do
+      it 'コメント投稿機能' do
+        # binding.irb
+        first('tr:nth-child(2) td:nth-child(6)').click
+        sleep(0.1)
+        fill_in "comment[comment]", with: 'test'
+        click_on 'コメントする'
+        expect(page).to have_content 'test'
+      end
+    end
+    context "投稿内容で" do
+      it 'コメント編集機能' do
+        first('tr:nth-child(2) td:nth-child(6)').click
+        sleep(0.1)
+        fill_in "comment[comment]", with: 'test'
+        click_on 'コメントする'
+        click_on 'コメント編集'
+        sleep(0.1)
+        # binding.irb
+        find('textarea#comment_edit_2').set('test2')
+        sleep(0.1)
+        click_on '更新する'
+        expect(page).to have_content 'hitest2'
+        # find('textarea#comment_edit_2').set('')
+        # comment_edit_#{comment.id}", with: 'test'
+#         fill_in find_by_id("topics-index_row-#{topic.id}_edit").click
+# expect(find_by_id("topics-index_row-#{topic.id}_title")).to have_content title
+      end
+    end
+    context "投稿内容で" do
+      it 'コメント削除機能' do
+        first('tr:nth-child(2) td:nth-child(6)').click
+        sleep(0.1)
+        fill_in "comment[comment]", with: 'test'
+        click_on 'コメントする'
+        click_on 'コメント削除'
+        expect(page).to have_content 'コメントが削除されました'
       end
     end
   end
