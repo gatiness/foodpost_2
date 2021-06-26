@@ -55,6 +55,7 @@
       <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
     </div>
     <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+  <%= link_to 'Back', posts_path %>
   </div>
-
 </div>
+

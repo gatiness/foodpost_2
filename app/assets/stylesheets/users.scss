@@ -91,3 +91,24 @@ foot-nav {
   font-size: 1em;/*サイズ2倍*/
   font-family: 'Staatliches', cursive;
 }
+
+.message_title {
+  position: absolute;
+  color: black;
+  top: 60%;
+  margin-left: 68%;
+  font-weight: normal; /*太字に*/
+  font-size: 1em;/*サイズ2倍*/
+  font-family: 'Staatliches', cursive;
+}
+
+.message_body {
+  position: absolute;
+  color: black;
+  top: 65%;
+  margin-left: 55%;
+  font-weight: normal; /*太字に*/
+  font-size: 1em;/*サイズ2倍*/
+  font-family: 'Staatliches', cursive;
+}
+
