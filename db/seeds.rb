@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Label.create!(
+#   [
+#     {name: 'おうちクッキング'},
+#     {name: 'テイクアウト'},
+#     {name: 'デリバリー'},
+#     {name: 'ドリンク'},
+#     {name: 'その他'},
+#   ]
+# )
+
 # Label
 label1 = Label.create!(
   name: 'おうちクッキング',
@@ -76,16 +86,21 @@ user6 = User.create!(
 )
 user6.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), filename: 'icon6.png')
 
+
+
 # Post
 post1_1 = Post.create!(
   title: "test-title1",
   content: "test_content1",
   image: File.open("app/assets/images/post_images/image1.png"),
   # label_id: label1.id,
-  user_id: user4.id
+  user_id: user4.id,
 )
 post1_1.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
-
+# Label.create!(
+#   name: Label.findRandom.id,
+#   post_id: post1_1.id,
+# )
 post1_2 = Post.create!(
   title: "test-title2",
   content: "test_content2",
