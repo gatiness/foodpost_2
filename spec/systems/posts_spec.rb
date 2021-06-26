@@ -1,7 +1,14 @@
 require 'rails_helper'
 RSpec.describe 'Post', type: :system do
   let!(:user){FactoryBot.create(:user)}
+  let!(:user3){FactoryBot.create(:user3)}
+
   let!(:post){FactoryBot.create(:post, user_id:user.id)}
+  let!(:post2){FactoryBot.create(:post2, user_id:user3.id)}
+  let!(:post3){FactoryBot.create(:post3, user_id:user3.id)}
+  # post2 = FactoryBot.create(:post2, user_id:user.id)
+  # post3 = FactoryBot.create(:post3, user_id:user.id)
+
   before do
     visit new_user_session_path
     fill_in "user[email]", with: 'aaa@amail.com'
@@ -23,17 +30,15 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿者本人が" do
       it '投稿を削除できる' do
-        # binding.irb
-        first('tr td:nth-child(7)').click
-        sleep(0.5)
+        binding.irb
+        first('tr td:nth-child(8)').click
         page.driver.browser.switch_to.alert.accept
-        # click_button 'Delete'
         expect(page).to have_content '削除しました'
       end
     end
     context "投稿者本人が" do
       it '投稿を編集できる' do
-        first('tr td:nth-child(6)').click 
+        first('tr td:nth-child(7)').click 
         fill_in "post[title]", with: '内容3'
         fill_in "post[content]", with: 'ねこ'
         click_button '投稿する'
@@ -55,14 +60,21 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'フード投稿が検索できる' do
-        post2 = FactoryBot.create(:post2, user_id:user.id)
-        post3 = FactoryBot.create(:post3, user_id:user.id)
-        # binding.irb
         fill_in "q[content_cont]", with: '内容'
-        click_on 'commit'
+        find('#search_post').click
         expect(page).to have_content 'チンパンジー'
         expect(page).to have_content 'ねこ'
         expect(page).not_to have_content 'content 1'
+      end
+    end
+    context "投稿内容で" do
+      it 'お気に入り機能' do
+        first('tr td:nth-child(8)').click
+        page.driver.browser.switch_to.alert.accept
+        first('tr td:nth-child(6)').click
+        click_on '♡お気に入り'
+        expect(page).to have_content 'お気に入りしました'
+        expect(page).to have_content 'Remove from favorite'
       end
     end
   end
