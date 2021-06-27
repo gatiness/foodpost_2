@@ -97,10 +97,10 @@ post1_1 = Post.create!(
   user_id: user4.id,
 )
 post1_1.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
-# Label.create!(
-#   name: Label.findRandom.id,
-#   post_id: post1_1.id,
-# )
+Labeling.create!(
+  label_id: label1.id,
+  post_id: post1_1.id,
+)
 post1_2 = Post.create!(
   title: "test-title2",
   content: "test_content2",
@@ -108,7 +108,10 @@ post1_2 = Post.create!(
   user_id: user2.id
 )
 post1_2.image.attach(io: File.open('./app/assets/images/post_images/image2.png'), filename: 'image2.png')
-
+Labeling.create!(
+  label_id: label2.id,
+  post_id: post1_2.id,
+)
 post1_3 = Post.create!(
   title: "test-title3",
   content: "test_content3",
@@ -116,7 +119,10 @@ post1_3 = Post.create!(
   user_id: user3.id
 )
 post1_3.image.attach(io: File.open('./app/assets/images/post_images/image3.png'), filename: 'image3.png')
-
+Labeling.create!(
+  label_id: label3.id,
+  post_id: post1_3.id,
+)
 post1_4 = Post.create!(
   title: "test-title4",
   content: "test_content4",
@@ -124,7 +130,10 @@ post1_4 = Post.create!(
   user_id: user4.id
 )
 post1_4.image.attach(io: File.open('./app/assets/images/post_images/image4.png'), filename: 'image4.png')
-
+Labeling.create!(
+  label_id: label4.id,
+  post_id: post1_4.id,
+)
 post1_5 = Post.create!(
   title: "test-title5",
   content: "test_content5",
@@ -132,7 +141,10 @@ post1_5 = Post.create!(
   user_id: user5.id
 )
 post1_5.image.attach(io: File.open('./app/assets/images/post_images/image5.png'), filename: 'image5.png')
-
+Labeling.create!(
+  label_id: label5.id,
+  post_id: post1_5.id,
+)
  # お気に入り
 Favorite.create!(
   [
