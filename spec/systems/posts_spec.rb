@@ -121,11 +121,13 @@ RSpec.describe 'Post', type: :system do
     end
     context "投稿内容で" do
       it 'コメント削除機能' do
+        # binding.irb
         sleep(0.8)
         first('tr:nth-child(2) td:nth-child(6)').click
         sleep(0.1)
         fill_in "comment[comment]", with: 'test'
         click_on 'コメントする'
+        sleep(0.1)
         click_on 'コメント削除'
         expect(page).to have_content 'コメントが削除されました'
       end
