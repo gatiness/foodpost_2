@@ -4,7 +4,6 @@ RSpec.describe 'guest_login', type: :system do
     context 'トップページのゲストログインボタンから' do
       it 'ゲストユーザーとしてログインできる' do     
         visit root_path
-        # binding.irb
         click_link 'ゲストログイン(閲覧用)'
         expect(page).not_to have_content 'ゲストログイン(閲覧用)'
       end

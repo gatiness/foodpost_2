@@ -100,7 +100,7 @@ RSpec.describe 'Post', type: :system do
         sleep(0.1)
         # fill_in "comment[comment]", with: 'test'
         # click_on 'コメントする'
-        click_on 'コメント編集'
+        find_by_id("comment_edit_row-#{comment.id}_btn").click
         sleep(0.1)
         # find_by_id("comment_edit_row-#{comment.id}").set("test2")
         find_by_id("comment_edit_row-#{comment.id}").set("test2")
@@ -128,7 +128,9 @@ RSpec.describe 'Post', type: :system do
         fill_in "comment[comment]", with: 'test'
         click_on 'コメントする'
         sleep(0.1)
-        click_on 'コメント削除'
+        # click_on 'コメント削除'
+        find_by_id("comment_delete_row-#{comment.id}_btn").click
+        sleep(0.1)
         expect(page).to have_content 'コメントが削除されました'
       end
     end
