@@ -141,6 +141,7 @@ ja:
       rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
       mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。エラーメッセージ: %{e}"
       mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+      error_prohibited_this_comment_from_being_saved: 以下のエラー項目を修正してください
     template:
       body: 次の項目を確認してください
       header:
