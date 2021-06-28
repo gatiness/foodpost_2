@@ -30,7 +30,6 @@ RSpec.describe 'ラベル登録機能', type: :system do
     # end
     # context 'ラベルで検索したら' do
     #   it 'そのラベルと紐づいてる投稿が表示される' do
-        
     #     # select "test3", from: :label_id
     #     # check('test')
     #     # click_link('test')
