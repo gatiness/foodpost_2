@@ -92,11 +92,9 @@ user6.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), fi
 post1_1 = Post.create!(
   title: "レモンのパンケーキ",
   content: "レモンのせすぎ",
-  image: File.open("app/assets/images/post_images/image1.png"),
-  # label_id: label1.id,
   user_id: user4.id,
 )
-post1_1.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
+post1_1.image.attach(io: File.open('./app/assets/images/post_images/image2.png'), filename: 'image2.png')
 Labeling.create!(
   label_id: label1.id,
   post_id: post1_1.id,
@@ -104,10 +102,9 @@ Labeling.create!(
 post1_2 = Post.create!(
   title: "スイカの角切り",
   content: "スイカを角切りにしてみました！",
-  # label_id: label2.id,
   user_id: user2.id
 )
-post1_2.image.attach(io: File.open('./app/assets/images/post_images/image2.png'), filename: 'image2.png')
+post1_2.image.attach(io: File.open('./app/assets/images/post_images/image3.png'), filename: 'imag3.png')
 Labeling.create!(
   label_id: label2.id,
   post_id: post1_2.id,
@@ -118,7 +115,7 @@ post1_3 = Post.create!(
   # label_id: label3.id,
   user_id: user3.id
 )
-post1_3.image.attach(io: File.open('./app/assets/images/post_images/image3.png'), filename: 'image3.png')
+post1_3.image.attach(io: File.open('./app/assets/images/post_images/image4.png'), filename: 'image4.png')
 Labeling.create!(
   label_id: label3.id,
   post_id: post1_3.id,
@@ -129,7 +126,7 @@ post1_4 = Post.create!(
   # label_id: label4.id,
   user_id: user4.id
 )
-post1_4.image.attach(io: File.open('./app/assets/images/post_images/image4.png'), filename: 'image4.png')
+post1_4.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
 Labeling.create!(
   label_id: label4.id,
   post_id: post1_4.id,
