@@ -1,5 +1,15 @@
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+    <li>
+      <%= msg %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="center-box">
-  <strong>フード投稿編集</strong>
+  <h3 class="text-center mt-5">フード投稿編集</h3>
 
   <%= render 'form' %>
   <%= link_to '戻る', posts_path %>
