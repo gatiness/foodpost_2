@@ -27,12 +27,20 @@
     <div class="container d-flex justify-content-between">
       <a href="#" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-        <strong>Food Timeline</strong>
+        <strong>フード投稿一覧</strong>
       </a>
       <%= search_form_for @q, url: posts_path do |f| %>
-      <%= f.search_field :content_cont %>
-      <%= f.submit "検索" %>
-      <% end %>
+      <%= f.search_field :content_cont, placeholder: 'フード投稿の内容で検索' %>
+      <%# <%= f.submit "検索" ,id:'search_post'%>
+      <%# <% end %> 
+
+    <%# <%= search_form_for @q, url: posts_path do |f| %> 
+      <% Label.all.each do |label| %>
+      <%= f.check_box :labels_id_eq_any, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+       <label><%= label.name %></label>
+    <% end %>
+    <%= f.submit "検索" %>
+  <% end %>
     </div>
   </div>
 </div>
@@ -93,13 +101,14 @@
 
 <div class="main">
 
-<table>
+<table border="1">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th>Posted by</th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>画像</th>
+      <th>ラベル</th>
+      <th>投稿者</th>
       
       <th colspan="3"></th>
     </tr>
@@ -115,16 +124,15 @@
             <%= image_tag (post.image), height: '80' %> 
           <% end %>
         </td>
+        <td><% post.labels.each do |label| %>
+            <%= label.name %>
+          <% end %></td>
         <td><%= link_to post.user.name, user_path(post.user.id) %></td>
-        <td><%= link_to 'Description', post %></td>
+        <td><%= link_to '詳細', post %></td>
         <% if post.user == current_user %>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '編集', edit_post_path(post) %></td>
+          <td><%= link_to '削除', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %> 
-        <td><%= link_to favorites_path(post_id: post.id), method: :post do %><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-          <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-        </svg><% end %></td> 
     <% end %>  
       </tr>
   </tbody>

@@ -67,9 +67,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'rails-i18n', '~>5.1'
 gem 'devise-i18n'
-gem 'rails_admin', '~> 2.0'
+gem 'rails_admin'
+gem 'devise-bootstrap-views'
 gem 'cancancan'
+gem 'bcrypt'
 gem 'mini_magick'
 gem 'image_processing'
 gem 'rmagick'

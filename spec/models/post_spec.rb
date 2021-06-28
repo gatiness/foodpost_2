@@ -38,10 +38,5 @@ describe '投稿モデル機能', type: :model do
         expect(post).to be_invalid
       end
     end
-    # context '住所が正しく入力されている場合' do
-    #   it '新規作成ができる' do
-    #     expect(post).to be_valid
-    #   end
-    # end
   end
 end

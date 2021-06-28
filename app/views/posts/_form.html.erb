@@ -1,25 +1,17 @@
-<%= form_with model: @post, local: true do |form| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this comment from being saved:</h2>
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+  
+<%= form_with(model: @post, local: true) do |form| %>
   <div class="field">
     <%= form.label :タイトル %><br>
-    <%= form.text_area :title %>
+    <%= form.text_area :title, placeholder: 'タイトルを入力' %>
   </div>
   <div class="field">
     <%= form.label :コンテンツ %><br>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, placeholder: 'コンテンツを入力' %>
   </div>
   <div class="field">
     <%= form.label :画像 %><br>
-    <%= form.file_field :image, accept: '.jpeg, .jpg, png' %>
+    <%= form.file_field :image,　autocomplete: "image", accept: '.jpeg, .jpg, png' %>
   </div>
   <div class="field">
     <%= form.label "ラベル" %>

@@ -45,6 +45,12 @@ foot-nav {
   padding: 0;
   box-sizing: border-box;
 }
+// .message {
+//   position: relative;
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 // #fullscreen img {
 //   width: 100%;
 //   height: auto;
@@ -75,3 +81,34 @@ foot-nav {
   font-size: 3em;/*サイズ2倍*/
   font-family: 'Staatliches', cursive;
 }
+
+.message p {
+  position: absolute;
+  color: black;
+  top: 20%;
+  right: 10%;
+  font-weight: bold; /*太字に*/
+  font-size: 1em;/*サイズ2倍*/
+  font-family: 'Staatliches', cursive;
+}
+
+// .message_title {
+//   position: absolute;
+//   color: black;
+//   top: 50%;
+//   margin-left: 68%;
+//   font-weight: normal; /*太字に*/
+//   font-size: 1em;/*サイズ2倍*/
+//   font-family: 'Staatliches', cursive;
+// }
+
+.message_body {
+  position: absolute;
+  color: black;
+  top: 55%;
+  margin-left: 58%;
+  font-weight: normal; /*太字に*/
+  font-size: 1em;/*サイズ2倍*/
+  font-family: 'Staatliches', cursive;
+}
+

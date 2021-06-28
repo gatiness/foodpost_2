@@ -6,14 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Label.create!(
-  [
-    {name: 'おうちクッキング'},
-    {name: 'テイクアウト'},
-    {name: 'デリバリー'},
-    {name: 'ドリンク'},
-    {name: 'その他'},
-  ]
+# Label.create!(
+#   [
+#     {name: 'おうちクッキング'},
+#     {name: 'テイクアウト'},
+#     {name: 'デリバリー'},
+#     {name: 'ドリンク'},
+#     {name: 'その他'},
+#   ]
+# )
+
+# Label
+label1 = Label.create!(
+  name: 'おうちクッキング',
+)
+label2 = Label.create!(
+  name: 'テイクアウト',
+)
+label3 = Label.create!(
+  name: 'デリバリー',
+)
+label4 = Label.create!(
+  name: 'ドリンク',
+)
+label5 = Label.create!(
+  name: 'その他',
 )
 
 # User
@@ -69,43 +86,62 @@ user6 = User.create!(
 )
 user6.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), filename: 'icon6.png')
 
+
+
 # Post
 post1_1 = Post.create!(
-  title: "test-title1",
-  content: "test_content1",
-  image: File.open("app/assets/images/post_images/image1.png"),
-  user_id: user4.id
+  title: "レモンのパンケーキ",
+  content: "レモンのせすぎ",
+  user_id: user4.id,
 )
-post1_1.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
-
+post1_1.image.attach(io: File.open('./app/assets/images/post_images/image2.png'), filename: 'image2.png')
+Labeling.create!(
+  label_id: label1.id,
+  post_id: post1_1.id,
+)
 post1_2 = Post.create!(
-  title: "test-title2",
-  content: "test_content2",
+  title: "スイカの角切り",
+  content: "スイカを角切りにしてみました！",
   user_id: user2.id
 )
-post1_2.image.attach(io: File.open('./app/assets/images/post_images/image2.png'), filename: 'image2.png')
-
+post1_2.image.attach(io: File.open('./app/assets/images/post_images/image3.png'), filename: 'imag3.png')
+Labeling.create!(
+  label_id: label2.id,
+  post_id: post1_2.id,
+)
 post1_3 = Post.create!(
-  title: "test-title3",
-  content: "test_content3",
+  title: "ズッキーニのトマト煮",
+  content: "チキンのトマト煮のもうちょっと味がうすいやつ",
+  # label_id: label3.id,
   user_id: user3.id
 )
-post1_3.image.attach(io: File.open('./app/assets/images/post_images/image3.png'), filename: 'image3.png')
-
+post1_3.image.attach(io: File.open('./app/assets/images/post_images/image4.png'), filename: 'image4.png')
+Labeling.create!(
+  label_id: label3.id,
+  post_id: post1_3.id,
+)
 post1_4 = Post.create!(
-  title: "test-title4",
-  content: "test_content4",
+  title: "インドの青鬼",
+  content: "クラフトビールおいしいですね",
+  # label_id: label4.id,
   user_id: user4.id
 )
-post1_4.image.attach(io: File.open('./app/assets/images/post_images/image4.png'), filename: 'image4.png')
-
+post1_4.image.attach(io: File.open('./app/assets/images/post_images/image1.png'), filename: 'image1.png')
+Labeling.create!(
+  label_id: label4.id,
+  post_id: post1_4.id,
+)
 post1_5 = Post.create!(
-  title: "test-title5",
-  content: "test_content5",
+  title: "山椒",
+  content: "山椒をたくさんいただいたので瓶にいれました",
+  # label_id: label5.id,
   user_id: user5.id
 )
 post1_5.image.attach(io: File.open('./app/assets/images/post_images/image5.png'), filename: 'image5.png')
-
+Labeling.create!(
+  label_id: label5.id,
+  post_id: post1_5.id,
+)
  # お気に入り
 Favorite.create!(
   [
