@@ -8,10 +8,6 @@ RSpec.describe 'Post', type: :system do
   let!(:post3){FactoryBot.create(:post3, user_id:user3.id)}
   let!(:comment){FactoryBot.create(:comment,post_id:post3.id,user_id:user.id)}
   
-  
-  # post2 = FactoryBot.create(:post2, user_id:user.id)
-  # post3 = FactoryBot.create(:post3, user_id:user.id)
-
   before do
     visit new_user_session_path
     fill_in "user[email]", with: 'aaa@amail.com'
@@ -66,21 +62,12 @@ RSpec.describe 'Post', type: :system do
     context "投稿内容で" do
       it 'フード投稿が検索できる' do
         fill_in "q[content_cont]", with: '内容'
-        find('#search_post').click
+        click_on('commit')
         expect(page).to have_content 'チンパンジー'
         expect(page).to have_content 'ねこ'
         expect(page).not_to have_content 'content 1'
       end
     end
-    # context "ラベルで" do
-    #   it 'フード投稿を検索できる' do
-    #     fill_in "q[content_cont]", with: '内容'
-    #     find('#search_post').click
-    #     expect(page).to have_content 'チンパンジー'
-    #     expect(page).to have_content 'ねこ'
-    #     expect(page).not_to have_content 'content 1'
-    #   end
-    # end
     context "投稿内容で" do
       it 'お気に入り機能' do
         # binding.irb
@@ -113,8 +100,6 @@ RSpec.describe 'Post', type: :system do
         sleep(0.1)
         # find_by_id("comment_edit_row-#{comment.id}").set("test2")
         find_by_id("comment_edit_row-#{comment.id}").set("test2")
-        
-        
         
         # binding.irb
         # find('textarea#comment_edit_2').set('test2')

@@ -11,4 +11,4 @@ RSpec.describe 'guest_login', type: :system do
   end
 end
 
-#ボタンがinvisibleなやつ。あとlet upshotとかいるのかわからない
+
