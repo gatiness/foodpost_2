@@ -90,8 +90,8 @@ user6.image.attach(io: File.open('./app/assets/images/user_icons/icon6.png'), fi
 
 # Post
 post1_1 = Post.create!(
-  title: "test-title1",
-  content: "test_content1",
+  title: "レモンのパンケーキ",
+  content: "レモンのせすぎ",
   image: File.open("app/assets/images/post_images/image1.png"),
   # label_id: label1.id,
   user_id: user4.id,
@@ -102,8 +102,8 @@ Labeling.create!(
   post_id: post1_1.id,
 )
 post1_2 = Post.create!(
-  title: "test-title2",
-  content: "test_content2",
+  title: "スイカの角切り",
+  content: "スイカを角切りにしてみました！",
   # label_id: label2.id,
   user_id: user2.id
 )
@@ -113,8 +113,8 @@ Labeling.create!(
   post_id: post1_2.id,
 )
 post1_3 = Post.create!(
-  title: "test-title3",
-  content: "test_content3",
+  title: "ズッキーニのトマト煮",
+  content: "チキンのトマト煮のもうちょっと味がうすいやつ",
   # label_id: label3.id,
   user_id: user3.id
 )
@@ -124,8 +124,8 @@ Labeling.create!(
   post_id: post1_3.id,
 )
 post1_4 = Post.create!(
-  title: "test-title4",
-  content: "test_content4",
+  title: "インドの青鬼",
+  content: "クラフトビールおいしいですね",
   # label_id: label4.id,
   user_id: user4.id
 )
@@ -135,8 +135,8 @@ Labeling.create!(
   post_id: post1_4.id,
 )
 post1_5 = Post.create!(
-  title: "test-title5",
-  content: "test_content5",
+  title: "山椒",
+  content: "山椒をたくさんいただいたので瓶にいれました",
   # label_id: label5.id,
   user_id: user5.id
 )

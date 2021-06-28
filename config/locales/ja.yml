@@ -122,8 +122,8 @@ ja:
       invalid: は不正な値です
       less_than: は%{count}より小さい値にしてください
       less_than_or_equal_to: は%{count}以下の値にしてください
-      model_invalid: 'バリデーションに失敗しました: %{errors}'
       not_a_number: は数値で入力してください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
       not_an_integer: は整数で入力してください
       odd: は奇数にしてください
       other_than: は%{count}以外の値にしてください
@@ -141,7 +141,6 @@ ja:
       rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
       mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。エラーメッセージ: %{e}"
       mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
-      error_prohibited_this_comment_from_being_saved: 以下のエラー項目を修正してください
     template:
       body: 次の項目を確認してください
       header:
