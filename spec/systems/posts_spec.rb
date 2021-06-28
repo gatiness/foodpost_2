@@ -72,6 +72,15 @@ RSpec.describe 'Post', type: :system do
         expect(page).not_to have_content 'content 1'
       end
     end
+    # context "ラベルで" do
+    #   it 'フード投稿を検索できる' do
+    #     fill_in "q[content_cont]", with: '内容'
+    #     find('#search_post').click
+    #     expect(page).to have_content 'チンパンジー'
+    #     expect(page).to have_content 'ねこ'
+    #     expect(page).not_to have_content 'content 1'
+    #   end
+    # end
     context "投稿内容で" do
       it 'お気に入り機能' do
         # binding.irb
@@ -122,14 +131,14 @@ RSpec.describe 'Post', type: :system do
     context "投稿内容で" do
       it 'コメント削除機能' do
         # binding.irb
-        sleep(0.8)
+        sleep(0.9)
         first('tr:nth-child(2) td:nth-child(6)').click
         sleep(0.1)
         fill_in "comment[comment]", with: 'test'
         click_on 'コメントする'
         sleep(0.1)
-        # click_on 'コメント削除'
-        find_by_id("comment_delete_row-#{comment.id}_btn").click
+        click_on 'コメント削除'
+        # find_by_id("comment_delete_row-#{comment.id}_btn").click
         sleep(0.1)
         expect(page).to have_content 'コメントが削除されました'
       end
