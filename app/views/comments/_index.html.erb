@@ -2,19 +2,22 @@
   <% comments.each do |comment| %>
     <%# <div class = "box11" > %>
 
-　　　<div class="edit_delete">
     <% if comment.id.present? %>
+　　　<div class="edit_delete">
        <div class="comment-comment" id ="this_comment_<%= comment.id %>"></div>
       　　　<p><%= comment.comment %></p>
-
+        <%= link_to comment.user.name, user_path(comment.user_id), class: 'btn btn-success btn-sm' %>
       　<% if comment.user == current_user %>
         <%= link_to "コメント編集", edit_post_comment_path(post, comment), remote: true, class:'btn btn-outline-success btn-sm', id:"comment_edit_row-#{comment.id}_btn" %>
         <%= link_to "コメント削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class:'btn btn-outline-success btn-sm', id:"comment_delete_row-#{comment.id}_btn" %>
      <%# </div>    %>
-        <% end %>
       </div>
+    <% end %>
+
         <p class = "hr"></p>
     <% end %>
   <% end %> 
 
 </ul> 
+
+
