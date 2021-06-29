@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :check_current_user, only: %i[ edit destroy ]
 
   def index
     @posts = Post.all
@@ -37,9 +38,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-        redirect_to posts_path, notice: '編集しました'
-      else
-        render :new
+      redirect_to posts_path, notice: '編集しました'
+    else
+      render :new
     end
   end
 
@@ -49,6 +50,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def check_current_user
+    if @post.id != current_user.id
+      redirect_to posts_path, notice: '権限がありません'
+    end
+  end
+
+
   def set_post
     @post = Post.find(params[:id])
   end
