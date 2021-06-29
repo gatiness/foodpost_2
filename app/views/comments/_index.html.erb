@@ -1,6 +1,5 @@
 <ul>
   <% comments.each do |comment| %>
-    <%# <div class = "box11" > %>
 
     <% if comment.id.present? %>
 　　　<div class="edit_delete">
@@ -10,9 +9,8 @@
       　<% if comment.user == current_user %>
         <%= link_to "コメント編集", edit_post_comment_path(post, comment), remote: true, class:'btn btn-outline-success btn-sm', id:"comment_edit_row-#{comment.id}_btn" %>
         <%= link_to "コメント削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class:'btn btn-outline-success btn-sm', id:"comment_delete_row-#{comment.id}_btn" %>
-     <%# </div>    %>
-      </div>
     <% end %>
+  </div>
 
         <p class = "hr"></p>
     <% end %>
