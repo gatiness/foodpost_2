@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def check_current_user
-    if @post.id != current_user.id
+    if @post.user_id != current_user.id
       redirect_to posts_path, notice: '権限がありません'
     end
   end
