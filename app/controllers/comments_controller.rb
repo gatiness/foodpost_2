@@ -44,6 +44,13 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  # def check_current_user
+  #   if @comment.id != current_user.id
+  #     redirect_to post_path(@comment.post_id), notice: '権限がありません'
+  #   end
+  # end
+
   def set_post
     @post = Post.find(params[:post_id])
   end

@@ -4,6 +4,8 @@
 <% if @user.image.attached? %>
   <%= image_tag @user.image %> 
 <% end %>
+<%if @user == current_user%>
 <%= link_to 'お気に入り一覧', favorites_path(user_id: @user.id), class: 'btn btn-secondary' %>
-<%= link_to "プロフィール編集", edit_user_registration_path, class: 'btn btn-secondary' %>
+<%= link_to "プロフィール編集", edit_user_registration_path(@user.id), class: 'btn btn-secondary' %>
+<%end%>
 </div>
